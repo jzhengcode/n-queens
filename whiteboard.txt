@@ -1,0 +1,23 @@
+
+one possible solution {Create a board array with all possible values
+
+Q1 - Current Row, don't test
+Q1 - Put column conflicts in list
+Q1 - Put major and minor diagnol conflicts in a list
+
+Delete all the conflicts from the entire board array
+  >current Row
+  >current column
+  >major diagnol
+  >minor diagnol
+
+Place Q2 at the closest remaining space (boardArray[0])
+]
+Repeat the same process for Q2, Q3, etc. until all rows and queens have been placed.}
+
+if one possible solution produces and emptied board then it is not an actual solution.
+
+Repeat process above with Q1 at next column...until we get n columns
+
+
+

@@ -79,12 +79,28 @@
     //
     // test if a specific row on this board contains a conflict
     hasRowConflictAt: function(rowIndex) {
-      return false; // fixme
+      var row = this.attributes[rowIndex];
+      var reducer = (accumulator,currentValue) => accumulator + currentValue;
+      var conflictCounter = row.reduce(reducer);
+
+      if (conflictCounter > 1){
+        return true;
+      }
+
+      return false;
     },
 
     // test if any rows on this board contain conflicts
     hasAnyRowConflicts: function() {
-      return false; // fixme
+      return _.some(this.attributes, (row, index) => {
+        if(Array.isArray(row)) {
+          if(this.hasRowConflictAt(index)) {
+            return true;
+          }
+        }
+      });
+
+      return false;
     },
 
 
