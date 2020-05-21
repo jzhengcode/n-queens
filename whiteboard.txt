@@ -20,4 +20,27 @@ if one possible solution produces and emptied board then it is not an actual sol
 Repeat process above with Q1 at next column...until we get n columns
 
 
+Major Diagnols:
+diagnol array = [[], [], ]
+Starting at row n-1 col 0
+n-1,0  <->  n,1
+n-2,0  <->  n,2
+n-3,0 <->  n,3
+...
+0, 0 <-> n,n
+iterate row from n-1 to zero
+iterate col from 1 to n
+push to a temp diagnol array
+when done iterating, push to diagnol array
 
+
+
+0, 1 <-> n-1, n-1
+0, 2 <-> n-2, n-2
+...
+0, n-1 <-> n-1, n-1
+
+iterate row from 0 to n-1
+iterate col from 1 to n-1
+push to temp diagnol array
+when done iterating push to diagnol array
