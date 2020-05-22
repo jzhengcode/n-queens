@@ -192,12 +192,95 @@
     //
     // test if a specific minor diagonal on this board contains a conflict
     hasMinorDiagonalConflictAt: function(minorDiagonalColumnIndexAtFirstRow) {
-      return false; // fixme
+
+      var board = this.attributes;
+      var index = minorDiagonalColumnIndexAtFirstRow;
+      console.log('index', index);
+      var total = 0;
+      var n = board.n - 1;
+      var column = -1;
+      // iterate from n to 0
+      if(index >= 0) {
+      for( var i = index; i >= 0; i--){
+        var row = board[i];
+        if(Array.isArray(row)){
+          column++;
+          console.log('(' + i + ', ' + column +')');
+          if(row[column] !== 0){
+            total++;
+            if (total > 1){
+              console.log('true');
+              return true;
+            }
+          }
+        }
+      }
+    }
+    column = Math.abs(index)-1;
+    if(index < 0) {
+      for( var i = n; i > 1; i--){
+        var row = board[i];
+        if(Array.isArray(row)){
+          column++;
+          if(row[column] !== 0){
+            total++;
+            if (total > 1){
+              return true;
+            }
+          }
+        }
+      }
+    }
+      // for(var i = n - index; i > 0; i--){
+      //   var row = board[i];
+
+      //   if(Array.isArray(row)){
+      //     var column = n - 1;
+
+      //     if(row[column] !== 0){
+      //       total++;
+      //       if (total > 1){
+      //         return true;
+      //       }
+      //     }
+      //   }
+      // }
+
+      // for(var i = n; i > 0; i--){
+      //   var row = board[i];
+
+      //   if(Array.isArray(row)){
+      //     var column = i;
+
+      //     if(row[column] !== 0){
+      //       total++;
+      //       if (total > 1){
+      //         return true;
+      //       }
+      //     }
+      //   }
+      // }
+      console.log('false');
+      return false;
     },
 
     // test if any minor diagonals on this board contain conflicts
     hasAnyMinorDiagonalConflicts: function() {
-      return false; // fixme
+      var board = this.attributes;
+      var n = board.n-1;
+      for(var i=n; i >= -n; i--){
+        if(this.hasMinorDiagonalConflictAt(i)){
+          console.log('MINOR CONFLICT');
+          return true;
+        }
+      }
+      // for (var i = 0; i < board.n + 1; i++){
+      //   if(this.hasMinorDiagonalConflictAt(i)){
+      //     return true;
+      //   }
+      // }
+      console.log('NO MINOR CONFLICT')
+      return false;
     }
 
     /*--------------------  End of Helper Functions  ---------------------*/
