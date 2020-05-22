@@ -59,6 +59,9 @@ window.countNRooksSolutions = function(n) {
   var solutionCount = 0;
   var board = new Board({n:n});
 
+  findSolution(0, n, board, "hasAnyRooksConflicts", function () {
+        solutionCount++;
+  });
   // call solution function (0, n, board, "hasAnyRookConflicts", function(){ solutionCount++}
 
   console.log('Number of solutions for ' + n + ' rooks:', solutionCount);
